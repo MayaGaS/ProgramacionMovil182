@@ -98,8 +98,52 @@
 //Spread Operator
 // console.log([...nombres, ...edades])
 
-import {suma, resta} from './calculadora.js';
+// import {suma, resta} from './calculadora.js';
 // import * as calc from './calculadora.js';
 
-console.log(suma(45,54));
-console.log(resta(45,54));
+// console.log(suma(45,54));
+// console.log(resta(45,54));
+
+/**
+const ul= document.createElement('ul')
+
+
+ * fetch('https://jsonplaceholder.typicode.com/posts')
+                .then(function (response){
+                    console.log("Carga de datos completada")
+                    return response.json()
+                }).then(function (data){
+                    console.log(data)
+                    data.forEach( function (post){
+                        const li = document.createElement('li')
+                        li.innerHTML= post.title
+                        ul.append(li)
+                    })
+                    document.body.append(ul)
+                })
+
+console.log('Cargando HTML')
+console.log('Cargando CSS')
+console.log('Cargando Imagenes')
+*/
+
+
+    // Ejemplo con Async Await
+const ul = document.createElement('ul')
+
+async function cargarDatos(){
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const datos = await response.json() //Traer los datos en json
+    console.log(datos) 
+    datos.forEach(function(post){
+        const li = document.createElement('li')
+        li.innerHTML = post.title //Traer por cada fila del JSON irla "imprimiendo" por c/u
+        ul.append(li) //Mando mi "li" a "ul" para de ahí mandar solo "ul"
+    })
+    document.body.append(ul) //Para que mande la lista completa (ul) al body
+}
+cargarDatos()
+console.log('Cargando HTML')
+console.log('Cargando CSS')
+console.log('Cargando Imagenes')
+
