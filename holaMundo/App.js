@@ -4,12 +4,12 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import React,{useState} from 'react'; //Importacion para hacer usos de datos
 
 //Funciones 
-const Texto=()=>{ /* Parametros */
+const Texto=({estilo})=>{ /* Parametros */
   const[contenido, setContenido] = useState('holaMundo') /* Variable de contenido (propiedad children), se u */
   const actualizarContenido=()=>{/* Array function que va a permitir hacer esa actualizacion */
     setContenido('State actualizó este texto')
   } 
-  return(<Text style={styles.text} onPress={actualizarContenido}>{contenido}</Text>) /* Mandar llamar el evento */
+  return(<Text style={[styles.text,estilo]} onPress={actualizarContenido}>{contenido}</Text>) /* Mandar llamar el evento */
 }
 
 const Boton=()=>{ /* Parametros */
@@ -25,13 +25,9 @@ export default function App() {
   return (
 
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-
-      {/* Dinamico la asignacion del texto */}
-      <Texto contenido={'Hola mundo'}></Texto> {/* Anidar otros componente dentro de otro componente */}
-      <Texto contenido={'ReactNative'}/>
-
-      <Boton></Boton>
+      <Texto estilo={styles.red}/>
+      <Texto estilo={styles.green}/>
+      <Texto estilo={styles.blue}/>
 
       <StatusBar style="auto" />
     </View>
@@ -42,14 +38,28 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection:'column',
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
   },
   text:{
-    color: 'red',
+    color: 'white',
     fontSize: 25, 
+    height: 150,
   },
+red:{
+  /*flex: 1,*/
+  backgroundColor:'red',
+},
+green:{
+  /*flex: 2,*/
+  backgroundColor:'green',
+},
+blue:{
+  //flex: 3,
+  backgroundColor:'blue',
+}
 });
 
 
