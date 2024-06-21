@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
-import React, { useState } from 'react'; // Importación para hacer uso de datos
+import React, { useState } from 'react';
 
 export default function App() {
   const [name, setName] = useState('');
@@ -13,67 +13,67 @@ export default function App() {
   };
 
   return (
-  <ImageBackground source={ require('C:\laragon\www\JS\ProgramacionMovil182\repaso1\assets\images\img1.jpg') } style={styles.backgroundImage}>
-    <View style={styles.container}>
-      <View style={styles.card}>
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Nombre:</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder='Ingresa tu nombre'
-            onChangeText={setName}
-            value={name}
-          />
-        </View>
+    <ImageBackground source={require('./assets/1.jpg')} style={styles.background}>
+      <View style={styles.container}>
+        <View style={styles.card}>
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Nombre:</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder='Ingresa tu nombre'
+              onChangeText={setName}
+              value={name}
+            />
+          </View>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Email:</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder='Ingresa tu email'
-            onChangeText={setEmail}
-            value={email}
-          />
-        </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Email:</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder='Ingresa tu email'
+              onChangeText={setEmail}
+              value={email}
+            />
+          </View>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Password:</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder='Ingresa tu contraseña'
-            secureTextEntry={true}
-            onChangeText={setPassword}
-            value={password}
-          />
-        </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Password:</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder='Ingresa tu contraseña'
+              secureTextEntry={true}
+              onChangeText={setPassword}
+              value={password}
+            />
+          </View>
 
-        <TouchableOpacity style={styles.button} onPress={guardar}>
-          <Text style={styles.buttonText}>GUARDAR</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={guardar}>
+            <Text style={styles.buttonText}>GUARDAR</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-
       <StatusBar style="auto" />
-    </View>
-  </ImageBackground>
+    </ImageBackground>
   );
 }
 
 // Configuraciones de hojas de estilos
 const styles = StyleSheet.create({
-  backgroundImage: {
+  background: {
     flex: 1,
-    resizeMode: 'cover',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
     padding: 20,
   },
   card: {
-    width: '90%',
+    width: '100%',
+    maxWidth: 400,
     padding: 20,
     borderRadius: 10,
     backgroundColor: '#fff',
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   inputContainer: {
-    marginBottom: 20,
+    marginBottom: 15,
   },
   label: {
     fontSize: 16,
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   button: {
+    marginTop: 10,
     width: '100%',
     height: 40,
     backgroundColor: 'red',
