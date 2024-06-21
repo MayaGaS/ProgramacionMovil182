@@ -97,10 +97,6 @@ const styles = StyleSheet.create({
 });
 
 
-
-
-
-
 /* const Boton=()=>{ // Parametros 
   const[contenido, setContenido] = useState('Presioname') // Variable de contenido (propiedad children), se u 
   const actualizarContenido=()=>{// Array function que va a permitir hacer esa actualizacion 
