@@ -1,6 +1,6 @@
 // Importaciones 
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Button, StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Dimensions } from 'react-native';
 import React,{useState} from 'react'; //Importacion para hacer usos de datos
 
 
@@ -24,9 +24,46 @@ export default function App() {
 
     <View style={styles.container}>
 
+      <ScrollView  style={styles.scrollView}> 
+
       <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+      <Text> Componente TextInput: {submit} </Text>
+
       <TextInput style={styles.TextInput} placeholder='Escribe texto ...' onChangeText={(t)=>setText(t) } value={text}/> 
       <Button title='Presioname...' onPress={()=>{setSubmit(text); alert('Texto enviado')}}/>
+
+      </ScrollView>
+
       {/* <TouchableHighlight 
         style={styles.touchable} 
         onPress={() => {setSubmit(text); alert('TouchableHighlight presionado'); }}
@@ -92,6 +129,10 @@ const styles = StyleSheet.create({
   toucableW: {
     padding: 10,
     backgroundColor: '#2196F3',
+  },
+
+  scrollView:{
+    width: Dimensions.get('window').width
   },
 
 });
