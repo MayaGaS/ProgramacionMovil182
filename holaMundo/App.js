@@ -1,7 +1,7 @@
 // Importaciones 
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Dimensions } from 'react-native';
-import React,{useState} from 'react'; //Importacion para hacer usos de datos
+import { Button, StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Dimensions, FlatList } from 'react-native';
+//import React,{useState} from 'react'; //Importacion para hacer usos de datos
 
 
 
@@ -17,80 +17,21 @@ import React,{useState} from 'react'; //Importacion para hacer usos de datos
 //Existen componentes, area donde se va a ejecutar
 export default function App() {
 
-  const[text, setText]= useState('valor default')
-  const[submit, setSubmit]= useState('')
-
   return (
 
     <View style={styles.container}>
 
-      <ScrollView  style={styles.scrollView}> 
-
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-      <Text> Componente TextInput: {submit} </Text>
-
-      <TextInput style={styles.TextInput} placeholder='Escribe texto ...' onChangeText={(t)=>setText(t) } value={text}/> 
-      <Button title='Presioname...' onPress={()=>{setSubmit(text); alert('Texto enviado')}}/>
-
-      </ScrollView>
-
-      {/* <TouchableHighlight 
-        style={styles.touchable} 
-        onPress={() => {setSubmit(text); alert('TouchableHighlight presionado'); }}
-        underlayColor={"#DDDDDD"}
-      >
-        <View style={styles.button}>
-          <Text style={styles.buttonText}> TouchableHighlight Button </Text>
-        </View>
-        </TouchableHighlight> */}
-
-        {/* <TouchableOpacity
-          style={styles.touchable}
-          onPress={() => {setSubmit(text); alert('TouchableOpacity presionado'); }}
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}> TouchableOpacity Button </Text>
-          </View>
-        </TouchableOpacity> */}
-
-      <TouchableWithoutFeedback
-        onPress={() => { setSubmit(text); alert('TouchableWithoutFeedback presionado'); }}
-      >
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>TouchableWithoutFeedback Button</Text>
-        </View>
-      </TouchableWithoutFeedback>
-
+      <FlatList 
+      data={[{key:1, name:'Mayanin'},
+            {key:2, name:'Diego'},
+            {key:3, name:'Mar'},
+            {key:4, name:'Andy'},
+            {key:5, name:'Ale'},
+            {key:6, name:'Leo'},
+            {key:7, name:'Mary'},
+      ]}
+      renderItem={({item})=><Text style={styles.item}> {item.name} </Text>} // Itera los datos que estan en la lista
+      />
 
       <StatusBar style="auto" />
     </View>
@@ -103,36 +44,17 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column', //La forma en la que se acomoda el texto ("orden")
     backgroundColor: '#fff',
-    alignItems: 'center', // alinea el orden de izquierda a derecha
+    alignItems: 'strech', // alinea el orden de izquierda a derecha
     justifyContent: 'center', // orden de arriba a abajo
+    paddingTop: 50
   },
 
-  TextInput: {
-    width: '30%',
-    height: 40,
-    borderBottomColor: 'purple', // pone color a la línea de abajo 
-    borderBottomWidth: 2, // es el grosor de la línea
-  },
-
-  touchable: {
-    marginTop: 20,
+  item:{
     padding: 10,
-    backgroundColor: 'blue',
-  },
-
-  touchableO: {    
-    marginTop: 20,
-    padding: 10,
-    backgroundColor: '#DDDDDD',
-  },
-
-  toucableW: {
-    padding: 10,
-    backgroundColor: '#2196F3',
-  },
-
-  scrollView:{
-    width: Dimensions.get('window').width
+    fontSize: 24,
+    height: 50,
+    borderColor: 'blue',
+    borderBottomWidth: 1
   },
 
 });
@@ -145,7 +67,3 @@ const styles = StyleSheet.create({
   } 
   return(<Button title={contenido} color="#000000" onPress={actualizarContenido}>{contenido}</Button>) // Mandar llamar el evento 
 } */
-
-
-
-
