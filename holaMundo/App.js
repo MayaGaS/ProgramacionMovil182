@@ -1,6 +1,6 @@
 // Importaciones 
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Dimensions, FlatList } from 'react-native';
+import { Button, StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Dimensions, FlatList, SectionList } from 'react-native';
 //import React,{useState} from 'react'; //Importacion para hacer usos de datos
 
 
@@ -20,17 +20,32 @@ export default function App() {
   return (
 
     <View style={styles.container}>
+      <SectionList
+        sections={[
+          { title: 'Grupo A',
+            data:[
+              {key:1, name:'Maya'},
+              {key:2, name:'Diego'},
+              {key:3, name:'Mar'},
+              {key:4, name:'Andy'},]
+          }, // llave del título 
 
-      <FlatList 
-      data={[{key:1, name:'Mayanin'},
-            {key:2, name:'Diego'},
-            {key:3, name:'Mar'},
-            {key:4, name:'Andy'},
-            {key:5, name:'Ale'},
-            {key:6, name:'Leo'},
-            {key:7, name:'Mary'},
-      ]}
-      renderItem={({item})=><Text style={styles.item}> {item.name} </Text>} // Itera los datos que estan en la lista
+          { title: 'Grupo B',
+            data:[
+              {key:5, name:'Ale'},
+              {key:6, name:'Leo'},
+              {key:7, name:'Mary'}, ]
+          }, // llave del título 
+
+          { title: 'Grupo C',
+            data:[
+              {key:8, name:'Ale'},
+              {key:9, name:'Leo'},
+              {key:10, name:'Mary'}, ]
+          }, // llave del título 
+        ]} // secciones que llevara cada uno de los componentes de la lista
+        renderItem={({item})=> <Text style={styles.item}> {item.name} </Text>}
+        renderSectionHeader={({section})=> <Text style={styles.section}> {section.title} </Text>} // renderiza las secciones 
       />
 
       <StatusBar style="auto" />
@@ -56,6 +71,14 @@ const styles = StyleSheet.create({
     borderColor: 'blue',
     borderBottomWidth: 1
   },
+
+  section:{
+    fontSize: 16,
+    fontWeight: 'bold',
+    backgroundColor: '#eee',
+    paddingTop: 4,
+    paddingBottom: 4
+  }
 
 });
 
