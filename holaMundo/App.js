@@ -1,7 +1,8 @@
 // Importaciones 
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Dimensions, FlatList, SectionList } from 'react-native';
-//import React,{useState} from 'react'; //Importacion para hacer usos de datos
+import { Button, StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Dimensions, FlatList, SectionList, ActivityIndicator } from 'react-native';
+import React,{useState, useEffect} from 'react'; //Importacion para hacer usos de datos
+// useEffect: extrae datos, pero no se los queda todos
 
 
 
@@ -16,38 +17,31 @@ import { Button, StyleSheet, Text, View, TextInput, TouchableHighlight, Touchabl
 
 //Existen componentes, area donde se va a ejecutar
 export default function App() {
+  const [user, setUser]= useState([]) // define la asiganación de los usuarios 
+  const [loading, setLoading]= useState(true) // denifinir los estados de carga
+
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response=> response.json())
+      .then(data=> {setUser(data); setLoading(false)}) // le pasamos los datos, y se los pasanos a setUser
+  },[])
+
+  // solo si es true, va a cargar
+  if(loading){
+    return <View style={styles.center}>
+        <ActivityIndicator size='large' color='blue'/>
+          <Text> Cargando </Text>
+    </View>
+  }
 
   return (
 
     <View style={styles.container}>
-      <SectionList
-        sections={[
-          { title: 'Grupo A',
-            data:[
-              {key:1, name:'Maya'},
-              {key:2, name:'Diego'},
-              {key:3, name:'Mar'},
-              {key:4, name:'Andy'},]
-          }, // llave del título 
 
-          { title: 'Grupo B',
-            data:[
-              {key:5, name:'Ale'},
-              {key:6, name:'Leo'},
-              {key:7, name:'Mary'}, ]
-          }, // llave del título 
-
-          { title: 'Grupo C',
-            data:[
-              {key:8, name:'Ale'},
-              {key:9, name:'Leo'},
-              {key:10, name:'Mary'}, ]
-          }, // llave del título 
-        ]} // secciones que llevara cada uno de los componentes de la lista
-        renderItem={({item})=> <Text style={styles.item}> {item.name} </Text>}
-        renderSectionHeader={({section})=> <Text style={styles.section}> {section.title} </Text>} // renderiza las secciones 
+      <FlatList 
+      data={user}
+      renderItem={({item})=><Text style={styles.item}> {item.name} {item.username} {item.address_city} </Text>} // Itera los datos que estan en la lista
       />
-
       <StatusBar style="auto" />
     </View>
   );
@@ -72,12 +66,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
 
-  section:{
-    fontSize: 16,
-    fontWeight: 'bold',
-    backgroundColor: '#eee',
-    paddingTop: 4,
-    paddingBottom: 4
+  center:{
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 
 });
